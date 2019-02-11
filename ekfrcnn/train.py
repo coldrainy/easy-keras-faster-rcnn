@@ -65,25 +65,25 @@ def train(train_path,
 		output_weight_path -- Output path for weights. (Default './model_frcnn.hdf5')
 	"""
 
-	num_rois = 32 if num_rois is None
+	num_rois = 32 if num_rois is None else num_rois
 
-	network = 'resnet50' if network is None
+	network = 'resnet50' if network is None else network
 
-	parser = 'pascal_voc' if parser is None
+	parser = 'pascal_voc' if parser is None else parser
 
-	horizontal_flips = False if horizontal_flips is None
+	horizontal_flips = False if horizontal_flips is None else horizontal_flips
 
-	vertical_flips =  False if vertical_flips is None
+	vertical_flips =  False if vertical_flips is None else vertical_flips
 
-	rot_90 = False if rot_90 is None
+	rot_90 = False if rot_90 is None else rot_90
 
-	num_epochs = 200 if num_epochs is None
+	num_epochs = 200 if num_epochs is None else num_epochs
 
-	num_epochs_len = 1000 if num_epochs_len is None
+	num_epochs_len = 1000 if num_epochs_len is None else num_epochs_len
 
-	config_filename = 'config.pickle' if config_filename is None
+	config_filename = 'config.pickle' if config_filename is None else config_filename
 
-	output_weight_path = './model_frcnn.hdf5' if output_weight_path is None
+	output_weight_path = './model_frcnn.hdf5' if output_weight_path is None else output_weight_path
 
 	if parser == 'pascal_voc':
 		from keras_frcnn.pascal_voc_parser import get_data

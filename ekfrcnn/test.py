@@ -36,9 +36,9 @@ def test(test_path,
 	"""
 
 
-	num_rois = 32 if num_rois is None
-	network = 'resnet50' if network is None
-	config_filename = 'config.pickle' if config_filename is None
+	num_rois = 32 if num_rois is None else num_rois
+	network = 'resnet50' if network is None else network
+	config_filename = 'config.pickle' if config_filename is None else config_filename
 
 	config_output_filename = config_filename
 
