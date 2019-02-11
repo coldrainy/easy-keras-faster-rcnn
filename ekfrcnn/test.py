@@ -5,11 +5,11 @@ import sys
 import time
 import pickle
 import numpy as np
-from keras_frcnn import config
+from kfrcnn import config
 from keras import backend as K
 from keras.layers import Input
 from keras.models import Model
-from keras_frcnn import roi_helpers
+from kfrcnn import roi_helpers
 
 sys.setrecursionlimit(40000)
 
@@ -46,9 +46,9 @@ def test(test_path,
 		C = pickle.load(f_in)
 
 	if C.network == 'resnet50':
-		import keras_frcnn.resnet as nn
+		import kfrcnn.resnet as nn
 	elif C.network == 'vgg':
-		import keras_frcnn.vgg as nn
+		import kfrcnn.vgg as nn
 
 	# turn off any data augmentation at test time
 	C.use_horizontal_flips = False

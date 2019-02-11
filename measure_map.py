@@ -4,13 +4,13 @@ import numpy as np
 import sys
 import pickle
 import time
-from keras_frcnn import config
-import keras_frcnn.resnet as nn
+from kfrcnn import config
+import kfrcnn.resnet as nn
 from keras import backend as K
 from keras.layers import Input
 from keras.models import Model
-from keras_frcnn import roi_helpers
-from keras_frcnn import data_generators
+from kfrcnn import roi_helpers
+from kfrcnn import data_generators
 from sklearn.metrics import average_precision_score
 
 
@@ -124,9 +124,9 @@ def mensure_map(test_path,
 	config_filename = 'config.pickle' if config_filename is None
 
 	if parser == 'pascal_voc':
-		from keras_frcnn.pascal_voc_parser import get_data
+		from kfrcnn.pascal_voc_parser import get_data
 	elif parser == 'simple':
-		from keras_frcnn.simple_parser import get_data
+		from kfrcnn.simple_parser import get_data
 	else:
 		raise ValueError("Command line option parser must be one of 'pascal_voc' or 'simple'")
 
