@@ -65,7 +65,7 @@ def train(train_path,
 		output_weight_path -- Output path for weights. (Default './model_frcnn.hdf5')
 	"""
 
-	num_rois = 32 if if num_rois is None
+	num_rois = 32 if num_rois is None
 
 	network = 'resnet50' if network is None
 

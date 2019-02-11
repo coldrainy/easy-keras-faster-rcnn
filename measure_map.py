@@ -119,7 +119,7 @@ def mensure_map(test_path,
 			(to be used when testing). (Default 'config.pickle')
 	"""
 
-	num_rois = 32 if if num_rois is None
+	num_rois = 32 if num_rois is None
 	parser = 'pascal_voc' if network is None
 	config_filename = 'config.pickle' if config_filename is None
 
