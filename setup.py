@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 requirements = open('README.md').read().split('\n')
 
 setup(
-    name='eekfrcnn.kfrcnn',
+    name='ekfrcnn.kfrcnn',
     author="Italo José G. de Oliveira",
     author_email='italo.i@live.com',
     description="This package provide a simple interface to use the Faster RCNN architecture",
