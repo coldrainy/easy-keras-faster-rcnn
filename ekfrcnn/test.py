@@ -5,16 +5,13 @@ import sys
 import time
 import pickle
 import numpy as np
-from kfrcnn import config
+from eekfrcnn.kfrcnn.ekfrcnn.kfrcnn import config
 from keras import backend as K
 from keras.layers import Input
 from keras.models import Model
-from kfrcnn import roi_helpers
+from ekfrcnn.kfrcnn import roi_helpers
 
 sys.setrecursionlimit(40000)
-
-if not test_path:   # if filename is not given
-	parser.error('Error: path to test data must be specified. Pass --path to command line')
 
 def test(test_path,
 	num_rois=None,
@@ -34,7 +31,8 @@ def test(test_path,
 		config_filename -- Location to store all the metadata related to the training
 			(to be used when testing). (Default 'config.pickle')
 	"""
-
+	if not test_path:   # if filename is not given
+		raise Exception('Error: path to test data must be specified. Pass --path to command line')
 
 	num_rois = 32 if num_rois is None else num_rois
 	network = 'resnet50' if network is None else network
@@ -46,9 +44,9 @@ def test(test_path,
 		C = pickle.load(f_in)
 
 	if C.network == 'resnet50':
-		import kfrcnn.resnet as nn
+		import ekfrcnn.kfrcnn.resnet as nn
 	elif C.network == 'vgg':
-		import kfrcnn.vgg as nn
+		import ekfrcnn.kfrcnn.vgg as nn
 
 	# turn off any data augmentation at test time
 	C.use_horizontal_flips = False

@@ -1,2 +1,2 @@
-from .train import train
-from .test import test
+from ekfrcnn.kfrcnn.train import train
+from ekfrcnn.kfrcnn.test import test

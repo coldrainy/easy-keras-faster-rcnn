@@ -13,10 +13,10 @@ from keras.models import Model
 from keras.layers import Input
 from keras import backend as K
 from keras.utils import generic_utils
-from kfrcnn import losses as losses
-import kfrcnn.roi_helpers as roi_helpers
+from ekfrcnn.kfrcnn import losses as losses
+import ekfrcnn.kfrcnn.roi_helpers as roi_helpers
 from keras.optimizers import Adam, SGD, RMSprop
-from kfrcnn import config, data_generators
+from ekfrcnn.kfrcnn import config, data_generators
 
 sys.setrecursionlimit(40000)
 
@@ -86,9 +86,9 @@ def train(train_path,
 	output_weight_path = './model_frcnn.hdf5' if output_weight_path is None else output_weight_path
 
 	if parser == 'pascal_voc':
-		from kfrcnn.pascal_voc_parser import get_data
+		from ekfrcnn.kfrcnn.pascal_voc_parser import get_data
 	elif parser == 'simple':
-		from kfrcnn.simple_parser import get_data
+		from ekfrcnn.kfrcnn.simple_parser import get_data
 	else:
 		raise ValueError("Command line option parser must be one of 'pascal_voc' or 'simple'")
 
@@ -103,10 +103,10 @@ def train(train_path,
 	C.num_rois = int(num_rois)
 
 	if network == 'vgg':
-		from kfrcnn import vgg as nn
+		from ekfrcnn.kfrcnn import vgg as nn
 		C.network = 'vgg'
 	elif network == 'resnet50':
-		from kfrcnn import resnet as nn
+		from ekfrcnn.kfrcnn import resnet as nn
 		C.network = 'resnet50'
 	else:
 		print('Not a valid model')
