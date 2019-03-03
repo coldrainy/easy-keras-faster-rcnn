@@ -17,7 +17,7 @@ from keras.utils import generic_utils
 from ekfrcnn.kfrcnn import roi_helpers
 from ekfrcnn.kfrcnn import losses as losses
 from keras.optimizers import Adam, SGD, RMSprop
-from ekfrcnn.kfrcnn.ekfrcnn.kfrcnn import config
+from ekfrcnn.kfrcnn import config
 from ekfrcnn.kfrcnn import config, data_generators
 from ekfrcnn.kfrcnn import roi_helpers as roi_helpers
 
