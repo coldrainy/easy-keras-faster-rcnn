@@ -122,6 +122,7 @@ def train(train_path,
 		C.base_net_weights = nn.get_weight_path()
 
 	all_imgs, classes_count, class_mapping = get_data(train_path)
+	print('all_imgs {}'. format(all_imgs))
 
 	if 'bg' not in classes_count:
 		classes_count['bg'] = 0
