@@ -336,6 +336,7 @@ def train(train_path,
 
 
 def test(test_path,
+	path_output,
 	num_rois=None,
 	config_filename=None,
 	network=None
@@ -427,7 +428,7 @@ def test(test_path,
 		class_mapping['bg'] = len(class_mapping)
 
 	class_mapping = {v: k for k, v in class_mapping.items()}
-	print(class_mapping)
+
 	class_to_color = {class_mapping[v]: np.random.randint(0, 255, 3) for v in class_mapping}
 	C.num_rois = int(num_rois)
 
@@ -575,4 +576,4 @@ def test(test_path,
 		# TODO: Add an save option or show option
 		# cv2.imshow('img', img)
 		# cv2.waitKey(0)
-		cv2.imwrite('./results_imgs/{}.png'.format(idx),img)
+		cv2.imwrite('{}/{}.png'.format(path_output,idx),img)
