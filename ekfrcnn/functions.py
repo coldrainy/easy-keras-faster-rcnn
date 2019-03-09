@@ -189,6 +189,8 @@ def train(train_path,
 	optimizer = Adam(lr=1e-5)
 	optimizer_classifier = Adam(lr=1e-5)
 
+	from ekfrcnn.kfrcnn import losses
+	
 	model_rpn.compile(optimizer=optimizer,
 		loss=[losses.rpn_loss_cls(num_anchors),
 		losses.rpn_loss_regr(num_anchors)])
