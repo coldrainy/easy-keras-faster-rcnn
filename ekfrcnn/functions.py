@@ -15,7 +15,7 @@ from keras.layers import Input
 from keras import backend as K
 from keras.utils import generic_utils
 from ekfrcnn.kfrcnn import roi_helpers
-from ekfrcnn.kfrcnn import losses as losses
+from ekfrcnn.kfrcnn import losses
 from keras.optimizers import Adam, SGD, RMSprop
 from ekfrcnn.kfrcnn import config
 from ekfrcnn.kfrcnn import config, data_generators
