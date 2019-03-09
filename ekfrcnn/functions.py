@@ -66,6 +66,7 @@ def train(train_path,
 
 		output_weight_path -- Output path for weights. (Default './model_frcnn.hdf5')
 	"""
+	global losses
 
 	num_rois = 32 if num_rois is None else num_rois
 
@@ -189,8 +190,6 @@ def train(train_path,
 	optimizer = Adam(lr=1e-5)
 	optimizer_classifier = Adam(lr=1e-5)
 
-	from ekfrcnn.kfrcnn import losses
-	
 	model_rpn.compile(optimizer=optimizer,
 		loss=[losses.rpn_loss_cls(num_anchors),
 		losses.rpn_loss_regr(num_anchors)])
