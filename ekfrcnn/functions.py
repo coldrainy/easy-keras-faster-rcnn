@@ -255,7 +255,7 @@ def train(train_path,
 					neg_samples = neg_samples[0]
 				else:
 					neg_samples = []
-				print('neg_samples:{}'.format(len(neg_samples)))
+					print('neg_samples:{}'.format(len(neg_samples)))
 
 				if len(pos_samples) > 0:
 					pos_samples = pos_samples[0]
