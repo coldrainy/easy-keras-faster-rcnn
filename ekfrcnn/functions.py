@@ -24,12 +24,12 @@ from ekfrcnn.kfrcnn import roi_helpers as roi_helpers
 
 def train(train_path,
 		input_weight_path=None,
-		num_rois=None, 
-		network=None, 
-		parser=None, 
-		horizontal_flips=None, 
-		vertical_flips=None, 
-		rot_90=None, 
+		num_rois=None,
+		network=None,
+		parser=None,
+		horizontal_flips=None,
+		vertical_flips=None,
+		rot_90=None,
 		num_epochs=None,
 		num_epochs_len=None,
 		config_filename=None,
@@ -200,7 +200,7 @@ def train(train_path,
 		metrics={'dense_class_{}'.format(len(classes_count)): 'accuracy'})
 
 	model_all.compile(optimizer='sgd', loss='mae')
-					
+
 	epoch_length = num_epochs_len
 	num_epochs = int(num_epochs)
 	iter_num = 0
@@ -226,6 +226,7 @@ def train(train_path,
 			try:
 
 				if len(rpn_accuracy_rpn_monitor) == epoch_length and C.verbose:
+					print('first print:{}'.format(len(rpn_accuracy_rpn_monitor)))
 					mean_overlapping_bboxes = float(sum(rpn_accuracy_rpn_monitor))/len(rpn_accuracy_rpn_monitor)
 					rpn_accuracy_rpn_monitor = []
 					print('Average number of overlapping bounding boxes from RPN = {} for {} previous iterations'.format(mean_overlapping_bboxes, epoch_length))
@@ -259,7 +260,7 @@ def train(train_path,
 					pos_samples = pos_samples[0]
 				else:
 					pos_samples = []
-				
+
 				rpn_accuracy_rpn_monitor.append(len(pos_samples))
 				rpn_accuracy_for_epoch.append((len(pos_samples)))
 
@@ -304,6 +305,7 @@ def train(train_path,
 					loss_class_regr = np.mean(losses[:, 3])
 					class_acc = np.mean(losses[:, 4])
 
+					print('second print:{}'.format(len(rpn_accuracy_for_epoch)))
 					mean_overlapping_bboxes = float(sum(rpn_accuracy_for_epoch)) / len(rpn_accuracy_for_epoch)
 					rpn_accuracy_for_epoch = []
 
@@ -382,7 +384,7 @@ def test(test_path,
 		""" formats the image size based on config """
 		img_min_side = float(C.im_size)
 		(height,width,_) = img.shape
-			
+
 		if width <= height:
 			ratio = img_min_side/width
 			new_height = int(ratio * height)
@@ -392,7 +394,7 @@ def test(test_path,
 			new_width = int(ratio * width)
 			new_height = int(img_min_side)
 		img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_CUBIC)
-		return img, ratio	
+		return img, ratio
 
 	def format_img_channels(img, C):
 		""" formats the image channels based on config """
@@ -494,7 +496,7 @@ def test(test_path,
 
 		# get the feature maps and output from the RPN
 		[Y1, Y2, F] = model_rpn.predict(X)
-		
+
 
 		R = roi_helpers.rpn_to_roi(Y1, Y2, C, K.image_dim_ordering(), overlap_thresh=0.7)
 
