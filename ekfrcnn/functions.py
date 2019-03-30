@@ -466,6 +466,9 @@ def test(test_path,
 
 	model_classifier = Model([feature_map_input, roi_input], classifier)
 
+    #save the model and the net to the same pbfile
+	model_all = Model([img_input, roi_input], rpn_layers[:2] + classifier)
+
 	print('Loading weights from {}'.format(C.model_path))
 	model_rpn.load_weights(C.model_path, by_name=True)
 	model_classifier.load_weights(C.model_path, by_name=True)
@@ -473,8 +476,9 @@ def test(test_path,
 	model_rpn.compile(optimizer='sgd', loss='mse')
 	model_classifier.compile(optimizer='sgd', loss='mse')
 
+	model_all.compile(optimizer='sgd', loss='mae')
+	model_all.save('model.h5')
 	all_imgs = []
-
 	classes = {}
 
 	bbox_threshold = 0.8
